@@ -91,12 +91,12 @@ namespace _18Ghosts
 
         private void Game()
         {
-            //    // esc para sair do jogo
-            //    // Call class DrawBoard
+            // esc para sair do jogo
+            // Call class DrawBoard
 
-            //    // Instances of game
-            //    Game game = new Game();
-            //    game.GameLoop();
+            // Instances of game
+            Game game = new Game();
+            game.GameLoop();
         }
 
         private void Rules()
