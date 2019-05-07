@@ -124,7 +124,8 @@ namespace _18Ghosts
                     else if (board.Houses[rows, columns].Portal != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Portal.Color;
-                        Console.Write(board.Houses[rows, columns].Portal.portal[(int)board.Houses[rows, columns].Portal.MyRotation]);
+                        Portal temp = board.Houses[rows, columns].Portal;
+                        Console.Write(temp.portal[(int)temp.MyRotation]);
                     }
                     // Draws Mirror
                     else if (board.Houses[rows, columns].Mirror)
