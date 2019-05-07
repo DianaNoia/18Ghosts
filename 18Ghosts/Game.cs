@@ -6,7 +6,7 @@ namespace _18Ghosts
 {
     class Game
     {
-        DrawGame drawBoard;
+        DrawGame drawGame;
         Board board;
 
         // Constructor
@@ -14,10 +14,9 @@ namespace _18Ghosts
         {
             board = new Board();
             drawGame = new DrawGame(board);
-
         }
 
-        // Method to make turns until the end of th game
+        // Method to make turns until the end of the game
         public void GameLoop()
         {
 
@@ -26,8 +25,9 @@ namespace _18Ghosts
             // Do While
             do
             {
-                drawGame.Board();
+                drawGame.Draw();
                 break;
+
             }
             while (true);
             Console.ReadLine();

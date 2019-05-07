@@ -7,8 +7,8 @@ namespace _18Ghosts
 {
     public class ChangeColor
     {
-        Color[]
-        colors = { Color.Red, Color.Blue, Color.Yellow, };
+        // Array for the colores
+        Color[] colors = { Color.Red, Color.Blue, Color.Yellow };
 
         //public static Color GetRandomColor()
         //{
