@@ -6,8 +6,14 @@ namespace _18Ghosts
 {
     class Game
     {
+        DrawGame drawBoard;
+        Board board;
+
+        // Constructor
         public Game()
         {
+            board = new Board();
+            drawGame = new DrawGame(board);
 
         }
 
@@ -20,9 +26,7 @@ namespace _18Ghosts
             // Do While
             do
             {
-                Console.Clear();
-                Console.WriteLine();
-                DrawBoard.Board();
+                drawGame.Board();
                 break;
             }
             while (true);
