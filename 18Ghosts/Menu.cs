@@ -17,35 +17,6 @@ namespace _18Ghosts
             Console.WriteLine();
             Console.WriteLine("\t\t   Press any key ");
 
-
-            /* CARPET ═ U+2550, ║ \u2551, ╔ U +2554, ╗ U+2557, ╚ U+255A, ╝ U+255D, 
-            ╬ \u256C ╦ 2566 ╩ \u2569 ╠ U+2560  ╣ U+2563 */
-
-            // PORTAL ╼ U+257C ╾ U+257E ╽ U+257D ╿ U+257F
-
-            // ESPELHO † \u2020 ‡ \2021 ♦ \u2666
-            // ⯌  U+2BCC ⯍ U+2BCD
-
-            //2 TIPOS DE PHANTASMAS ░ \u2591 ▓ \u2593 ֍ \u058D ◌ \u25CC ● \u25CF ☻ \u263B
-            // fanta ⛄U+26C4 ⛇ \u26C7 ㋡ \u32E1 ㋛ U+32DB 〠 \u3020
-            //Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.WriteLine("\t\u2591 ");
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine(" \t\u25CC ");
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine(" \t\u263B ");
-
-            ////PORTAL
-            //Console.ForegroundColor = ConsoleColor.White;
-            ////abertura para a esquerda
-            //Console.WriteLine(" \t\u03FD ");
-            ////abertura para direita
-            //Console.WriteLine(" \t\u03F9 ");
-            ////abertura para a esquerda
-            //Console.WriteLine(" \t\u256C ");
-            //Console.WriteLine(" \t\u2AA7");
-            //abertura para direita
-
             // It will stop the program until the user press any key
             Console.ReadKey();
             // Call method MainMenu()
@@ -53,6 +24,7 @@ namespace _18Ghosts
 
         }
 
+        // Method  to see the menu
         private void MainMenu()
         {
             Console.Clear();
@@ -64,6 +36,7 @@ namespace _18Ghosts
             Console.WriteLine("\t\t 3 ->  Credits  <- ");
             Console.WriteLine("\t\t 4 ->  Quit     <- ");
 
+            // Switch cicle to choose what to do
             switch (Convert.ToInt32(Console.ReadLine()))
             {
                 case 1:
@@ -89,6 +62,7 @@ namespace _18Ghosts
             Console.ReadLine();
         }
 
+        // Constructor
         private void Game()
         {
             // esc para sair do jogo
@@ -99,6 +73,7 @@ namespace _18Ghosts
             game.GameLoop();
         }
 
+        // Method for rule porposes
         private void Rules()
         {
             Console.Clear();
@@ -161,6 +136,7 @@ namespace _18Ghosts
             MainMenu();
         }
 
+        // Method to show who made the game
         private void Credits()
         {
             // unicode 𐬼 U+10B3C 𑗊 U+115CA 𑗋 U+115CB 𑗌 U+115CC 𑗍 U+115CD 𑗎 U+115CE 𑗐 U+115D0 𑗕 U+115D5 ⏹
@@ -178,6 +154,7 @@ namespace _18Ghosts
             MainMenu();
         }
 
+        // Method to quit the game
         private void Quit()
         {
             Environment.Exit(0);
