@@ -8,6 +8,7 @@ namespace _18Ghosts
     {
         DrawGame drawGame;
         Board board;
+        FirstsGhosts firstGhosts;
 
         // Constructor
         public Game()
