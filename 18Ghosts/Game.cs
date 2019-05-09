@@ -4,25 +4,41 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Responsible for game mechanics and game loop
+    /// </summary>
     class Game
     {
-        // Variables
+        /**\brief Contains instance of DrawGame class*/
         private DrawGame drawGame;
+        /**\brief Contains instance of Board class*/
         private Board board;
+        /**\brief Contains instance of Player class*/
         private Player player1;
+        /**\brief Contains instance of Player class*/
         private Player player2;
+        /**\brief Contains instance of Player class*/
         private Player currentPlayer;
+        /**\brief Instance of ConsoleKeyInfo*/
         private ConsoleKeyInfo key;
 
+        /**\brief Holds current selected color*/
         private ConsoleColor selectedColor;
+        /**\brief Checks for Win Condition*/
         private bool winCondition;
+        /**\brief Holds user input*/
         private string input;
+        /**\brief Holds CurrentTurn*/
         private int currentTurn;
+        /**\brief Holds the current X and Y positions*/
         private int currentX, currentY;
 
-        // Constructor
+        /// <summary>
+        /// Game constructor
+        /// </summary>
         public Game()
         {
+            // Initializes all necessary variables
             board = new Board();
             drawGame = new DrawGame(board);
             player1 = new Player(Type.type1, 9);
@@ -32,7 +48,9 @@ namespace _18Ghosts
             winCondition = false;
         }
 
-        // Method to make turns until the end of the game
+        /// <summary>
+        /// Loops Game
+        /// </summary>
         public void GameLoop()
         {
 
@@ -40,10 +58,13 @@ namespace _18Ghosts
             // otherwise false
             do
             {
+                // Draws game and playerstats
                 drawGame.Draw();
                 drawGame.PlayerStats(currentPlayer);
-                if ( currentTurn < 2 /*currentPlayer.HasGhosts()*/)
+                // Checks if any player still has ghosts
+                if (currentPlayer.HasGhosts())
                 {
+                    // If so he has to place them on board
                     drawGame.AskForColor();
                     input = Console.ReadLine();
                     if (CheckColor(input))
@@ -93,10 +114,14 @@ namespace _18Ghosts
                 currentPlayer = currentPlayer == player1 ? player2 : player1;
                 currentTurn++;
             }
+            // Checks if win condition is false
             while (!winCondition);
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Checks Win status
+        /// </summary>
         private void CheckForWin()
         {
             if (currentPlayer.FreeBlueGhosts != 0 && currentPlayer.FreeRedGhosts != 0 &&
@@ -114,8 +139,12 @@ namespace _18Ghosts
             }
         }
 
+        /// <summary>
+        /// Checks houses near portals
+        /// </summary>
         private void CheckNearPortals()
         {
+            // Checks houses around Red Portal
             switch (board.Houses[0, 2].Portal.MyRotation)
             {
                 case Rotation.East:
@@ -137,6 +166,7 @@ namespace _18Ghosts
                     }
                     break;
             }
+            // Checks houses around Blue Portal
             switch (board.Houses[4, 2].Portal.MyRotation)
             {
                 case Rotation.East:
@@ -158,6 +188,7 @@ namespace _18Ghosts
                     }
                     break;
             }
+            // Checks houses around Yellow Portal
             switch (board.Houses[2, 4].Portal.MyRotation)
             {
                 case Rotation.North:
@@ -182,13 +213,15 @@ namespace _18Ghosts
         }
 
         /// <summary>
-        /// 
+        /// Updates the ghost position
         /// </summary>
-        /// <returns></returns>
+        /// <returns> update the ghost position </returns>
         private bool UpdateGhost()
         {
             int x = currentX, y = currentY;
             bool temp = false;
+            
+            // Updates the position for each key  
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
@@ -222,15 +255,14 @@ namespace _18Ghosts
                 default:
                     return temp;
             }
-
+            
             if (board.Houses[y, x].Portal != null ||
                 (board.Houses[y, x].Ghost != null &&
                 board.Houses[y, x].Ghost.Color == board.Houses[currentY, currentX].Ghost.Color))
             {
                 temp = false;
             }
-
-
+            
             if (temp)
             {
                 MoveGhost(x, y);
@@ -239,8 +271,14 @@ namespace _18Ghosts
             return temp;
         }
 
+        /// <summary>
+        /// Moves the Ghost
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         private void MoveGhost(int x, int y)
         {
+            // Updates the position of ghost if it's moved into a mirror house
             if (board.Houses[y, x].Mirror)
             {
                 if (x == 1 && y == 1)
@@ -260,15 +298,19 @@ namespace _18Ghosts
                     board.Houses[1, 1].Ghost = board.Houses[currentY, currentX].Ghost;
                 }
             }
+            // If the ghost is moved into an empty house, it occupies it
             else if(board.Houses[y, x].IsEmpty)
             {
                 board.Houses[y, x].Ghost = board.Houses[currentY, currentX].Ghost;
                 board.Houses[y, x].IsEmpty = false;
             }
+            // If ghost moves into house with another ghost already in it
             else
             {
                 ConsoleColor myColor = board.Houses[currentY, currentX].Ghost.Color;
                 ConsoleColor otherColor = board.Houses[y, x].Ghost.Color;
+                // Checks which ghost wins the fight and stays in the house
+                // Rotates the portal of the loser's color
                 switch (myColor)
                 {
                     case ConsoleColor.Red:
@@ -310,6 +352,10 @@ namespace _18Ghosts
             board.Houses[currentY, currentX].IsEmpty = true;
         }
 
+        /// <summary>
+        /// Rotates the portals
+        /// </summary>
+        /// <param name="color"></param>
         private void RotatePortal(ConsoleColor color)
         {
             switch (color)
@@ -326,9 +372,15 @@ namespace _18Ghosts
             }
         }
 
+        /// <summary>
+        /// Checks the color chosen by the player
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private bool CheckColor(string input)
         {
             bool temp;
+            // checks the input for the color given by player
             switch (input)
             {
                 case "Red":
@@ -351,6 +403,12 @@ namespace _18Ghosts
             return temp;
         }
 
+        /// <summary>
+        /// Checks if the current house has a ghost 
+        /// </summary>
+        /// <param name="col"></param>
+        /// <param name="row"></param>
+        /// <returns></returns>
         private bool CheckGhost(string col, string row)
         {
             currentX = Convert.ToInt32(col);
@@ -363,11 +421,16 @@ namespace _18Ghosts
             {
                 temp = true;
             }
-
-
+            
             return temp;
         }
 
+        /// <summary>
+        /// Checks if the selected position is compatible with the ghost the player wants to play
+        /// </summary>
+        /// <param name="col"></param>
+        /// <param name="row"></param>
+        /// <returns></returns>
         private bool CheckPosition(string col, string row)
         {
             int x = Convert.ToInt32(col);

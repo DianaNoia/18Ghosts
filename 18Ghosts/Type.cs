@@ -4,6 +4,8 @@ using System.Text;
 
 namespace _18Ghosts
 {
-    // Enumeration for Ghosts types
-   enum Type { type1, type2}
+    /// <summary>
+    /// Enumeration for Ghosts types
+    /// </summary>
+    enum Type { type1, type2 }
 }
