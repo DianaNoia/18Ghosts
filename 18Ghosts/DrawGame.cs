@@ -113,6 +113,15 @@ namespace _18Ghosts
                     if (board.Houses[rows, columns].Ghost != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Ghost.Color;
+                        if (board.Houses[rows, columns].Ghost.MyType==Type.type1)
+                        {
+                            Console.WriteLine("\u263B");
+                        }
+                        else if (board.Houses[rows, columns].Ghost.MyType == Type.type2)
+                        {
+                            Console.WriteLine("\u25CC");
+                        }
+
                     }
                     // Draws empty house
                     else if (board.Houses[rows, columns].Color != (ConsoleColor.Black))
@@ -148,8 +157,6 @@ namespace _18Ghosts
 // ⯌  U+2BCC ⯍ U+2BCD
 
 //2 TIPOS DE PHANTASMAS ░ \u2591 ▓ \u2593 ֍ \u058D ◌ \u25CC ● \u25CF ☻ \u263B
-// fanta ⛄U+26C4 ⛇ \u26C7 ㋡ \u32E1 ㋛ U+32DB 〠 \u3020
-
 //Console.ForegroundColor = ConsoleColor.Blue;
 //Console.WriteLine("\t\u26C4 ");
 //Console.ForegroundColor = ConsoleColor.Yellow;
