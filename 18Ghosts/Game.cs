@@ -15,6 +15,7 @@ namespace _18Ghosts
         private ConsoleKeyInfo key;
 
         private ConsoleColor selectedColor;
+        private bool winCondition;
         private string input;
         private int currentTurn;
         private int currentX, currentY;
@@ -27,7 +28,8 @@ namespace _18Ghosts
             player1 = new Player(Type.type1, 9);
             player2 = new Player(Type.type2, 9);
             currentPlayer = player1;
-            currentTurn = 0;
+            currentTurn = 1;
+            winCondition = false;
         }
 
         // Method to make turns until the end of the game
@@ -85,12 +87,98 @@ namespace _18Ghosts
 
                     }
                 }
+                CheckNearPortals();
                 drawGame.Draw();
+                CheckForWin();
                 currentPlayer = currentPlayer == player1 ? player2 : player1;
                 currentTurn++;
             }
-            while (true);
+            while (!winCondition);
             Console.ReadLine();
+        }
+
+        private void CheckForWin()
+        {
+            if (currentPlayer.FreeBlueGhosts != 0 && currentPlayer.FreeRedGhosts != 0 &&
+                currentPlayer.FreeYellowGhosts != 0)
+            {
+                winCondition = true;
+                Console.Clear();
+                if (currentPlayer.MyType == Type.type1) {
+                    Console.WriteLine("Player 1 Wins!");
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                }
+            }
+        }
+
+        private void CheckNearPortals()
+        {
+            switch (board.Houses[0, 2].Portal.MyRotation)
+            {
+                case Rotation.East:
+                    if (!board.Houses[0, 3].IsEmpty && board.Houses[0, 3].Ghost.Color == ConsoleColor.Red)
+                    {
+                        currentPlayer.FreeRedGhosts++;
+                    }
+                    break;
+                case Rotation.South:
+                    if (!board.Houses[1, 2].IsEmpty && board.Houses[1, 2].Ghost.Color == ConsoleColor.Red)
+                    {
+                        currentPlayer.FreeRedGhosts++;
+                    }
+                    break;
+                case Rotation.West:
+                    if (!board.Houses[0, 1].IsEmpty && board.Houses[0, 1].Ghost.Color == ConsoleColor.Red)
+                    {
+                        currentPlayer.FreeRedGhosts++;
+                    }
+                    break;
+            }
+            switch (board.Houses[4, 2].Portal.MyRotation)
+            {
+                case Rotation.East:
+                    if (!board.Houses[4, 3].IsEmpty && board.Houses[4, 3].Ghost.Color == ConsoleColor.Blue)
+                    {
+                        currentPlayer.FreeBlueGhosts++;
+                    }
+                    break;
+                case Rotation.North:
+                    if (!board.Houses[3, 2].IsEmpty && board.Houses[3, 2].Ghost.Color == ConsoleColor.Blue)
+                    {
+                        currentPlayer.FreeBlueGhosts++;
+                    }
+                    break;
+                case Rotation.West:
+                    if (!board.Houses[4, 2].IsEmpty && board.Houses[4, 2].Ghost.Color == ConsoleColor.Blue)
+                    {
+                        currentPlayer.FreeBlueGhosts++;
+                    }
+                    break;
+            }
+            switch (board.Houses[2, 4].Portal.MyRotation)
+            {
+                case Rotation.North:
+                    if (!board.Houses[1, 4].IsEmpty && board.Houses[1, 4].Ghost.Color == ConsoleColor.Yellow)
+                    {
+                        currentPlayer.FreeYellowGhosts++;
+                    }
+                    break;
+                case Rotation.South:
+                    if (!board.Houses[3, 4].IsEmpty && board.Houses[3, 4].Ghost.Color == ConsoleColor.Yellow)
+                    {
+                        currentPlayer.FreeYellowGhosts++;
+                    }
+                    break;
+                case Rotation.West:
+                    if (!board.Houses[2, 3].IsEmpty && board.Houses[2, 3].Ghost.Color == ConsoleColor.Yellow)
+                    {
+                        currentPlayer.FreeYellowGhosts++;
+                    }
+                    break;
+            }
         }
 
         /// <summary>
@@ -219,6 +307,7 @@ namespace _18Ghosts
                 }
             }
             board.Houses[currentY, currentX].Ghost = null;
+            board.Houses[currentY, currentX].IsEmpty = true;
         }
 
         private void RotatePortal(ConsoleColor color)
