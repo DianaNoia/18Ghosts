@@ -40,43 +40,27 @@ namespace _18Ghosts
             Console.WriteLine("      |       |       |       |       |        |");
             Console.WriteLine("______|_______|_______|_______|_______|________|");
             Console.WriteLine();
-            FirstStep();
             Legend();
             DrawVerification();
 
         }
 
-        public void FirstStep()
-        {
-            Console.SetCursorPosition(57, 4);
-            Console.Write(" - G1 - ");
-            Console.SetCursorPosition(57, 5);
-            Console.Write(" [ X ] ");
-            Console.SetCursorPosition(57, 7);
-            Console.Write("  <-> ");
-
-            Console.SetCursorPosition(57, 10);
-            Console.Write(" - G2 - ");
-            Console.SetCursorPosition(57, 12);
-            Console.Write(" [ O ] ");
-            Console.SetCursorPosition(57, 13);
-            Console.Write(" <   > ");
-        }
-
         // LEGENDA COM OS SIMBOLOS !!!!!
         public void Legend()
         {
-            Console.SetCursorPosition(35, 19);
-            Console.Write(" Carpet      ║  ╔ ╗ ═ ╚ ╝ ╬ ╦ ╩ ╠ ╣");
-            Console.SetCursorPosition(35, 21);
-            Console.Write(" Portal      N ╿ . S ╽ . E ╼  . W ╾");
-            Console.SetCursorPosition(35, 23);
-            Console.Write(" Mirror      ♦");
+            Console.SetCursorPosition(55, 5);
+            Console.Write(" Carpet         ║  ╔ ╗ ═ ╚ ╝ ╬ ╦ ╩ ╠ ╣ ");
+            Console.SetCursorPosition(55, 7);
+            Console.Write(" Portal         N ╿ . S ╽ . E ╼  . W ╾ ");
+            Console.SetCursorPosition(55, 8);
+            Console.Write(" Portal...      Aberto ->  ╾  <- Fechado ");
+            Console.SetCursorPosition(55, 10);
+            Console.Write(" Mirror         ♦ ");
 
             // MOSTRAR AS TRES CORES DOS GHOSTS
-            Console.SetCursorPosition(32, 25);
+            Console.SetCursorPosition(55, 12);
             Console.Write(" G1 - Ghost 1   ☻ ");
-            Console.SetCursorPosition(32, 27);
+            Console.SetCursorPosition(55, 14);
             Console.Write(" G2 - Ghost 2   ◌ ");
         }
 
@@ -149,44 +133,46 @@ namespace _18Ghosts
         public void AskForColor()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("What color ghost do you want to place? (Ex: Red)");
+            Console.WriteLine("    What color ghost do you want to place? (E.g.: Red)");
         }
 
         public void AskForPosition()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("In what position do you want to place it?");
+            Console.WriteLine("    In what position do you want to place it?");
+            Console.WriteLine("    (Position x e.g. 2 | Position y e.g. 3)");
+
         }
 
         public void WrongColor()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("That color is unavailable try again...");
+            Console.WriteLine("    That color is unavailable try again...");
         }
         
         
         public void WrongPlace()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("That location can't be ocupied...");
+            Console.WriteLine("    That location can't be ocupied...");
         }
 
         public void AskForDungeon()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("Do you want to free a ghost from the dungeon?");
+            Console.WriteLine("    Do you want to free a ghost from the dungeon?");
         }
 
         public void GhostToPlay()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("What's the position of the ghost you want to control?");
+            Console.WriteLine("    What's the position of the ghost you want to control?");
         }
 
         public void HouseToMoveTo()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine("Use the arrow keys to move to one house in any direction.");
+            Console.WriteLine("    Use the arrow keys to move to one house in any direction.");
         }
 
         public void ClearLine()
@@ -199,18 +185,18 @@ namespace _18Ghosts
         public void PlayerStats(Player player)
         {
             Console.SetCursorPosition(0, 18);
-            Console.WriteLine("Player Stats: ");
+            Console.WriteLine("  Player Stats: ");
             if (player.MyType == Type.type1)
             {
-                Console.WriteLine("Current PLayer: PLayer 1 \n");
+                Console.WriteLine("  Current PLayer: PLayer 1 \n");
             }
             else
             {
-                Console.WriteLine("Current PLayer: PLayer 2 \n");
+                Console.WriteLine(" > Current PLayer: PLayer 2 \n");
             }
-            Console.WriteLine($"Red Ghosts: {player.RedGhost}\n");
-            Console.WriteLine($"Blue Ghosts: {player.BlueGhost}\n");
-            Console.WriteLine($"Yellow Ghosts: {player.YellowGhost}\n");
+            Console.WriteLine($" > Red Ghosts: {player.RedGhost}\n");
+            Console.WriteLine($" > Blue Ghosts: {player.BlueGhost}\n");
+            Console.WriteLine($" > Yellow Ghosts: {player.YellowGhost}\n");
         }
 
 
@@ -222,24 +208,6 @@ namespace _18Ghosts
 
 //PORTAL ╼ U+257C ╾ U+257E ╽ U+257D ╿ U+257F
 
-// ESPELHO † \u2020 ‡ \2021 ♦ \u2666
-// ⯌  U+2BCC ⯍ U+2BCD
+// ESPELHO † \u2020 ‡ \u2021 ♦ \u2666
 
 //2 TIPOS DE PHANTASMAS ░ \u2591 ▓ \u2593 ֍ \u058D ◌ \u25CC ● \u25CF ☻ \u263B
-//Console.ForegroundColor = ConsoleColor.Blue;
-//Console.WriteLine("\t\u26C4 ");
-//Console.ForegroundColor = ConsoleColor.Yellow;
-//Console.WriteLine(" \t\u25CC ");
-//Console.ForegroundColor = ConsoleColor.Red;
-//Console.WriteLine(" \t\u263B ");
-
-//PORTAL
-//Console.ForegroundColor = ConsoleColor.White;
-//abertura para a esquerda
-//Console.WriteLine(" \t\u03FD ");
-//abertura para direita
-//Console.WriteLine(" \t\u03F9 ");
-//abertura para a esquerda
-//Console.WriteLine(" \t\u256C ");
-//Console.WriteLine(" \t\u2AA7");
-//abertura para direita

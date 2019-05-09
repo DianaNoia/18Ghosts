@@ -144,8 +144,8 @@ namespace _18Ghosts
             Console.WriteLine();
             Console.WriteLine("\t\t\tCredits  ");
             Console.WriteLine();
-            Console.WriteLine("\t\tDiana Nóia nº 21703004 ");
-            Console.WriteLine("\t\tSara Gama  nº 21705494 ");
+            Console.WriteLine("\t\t\u2666 Diana Nóia nº 21703004 ");
+            Console.WriteLine("\t\t\u2666 Sara Gama  nº 21705494 ");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("\t Press any key to return to the Menu ");
