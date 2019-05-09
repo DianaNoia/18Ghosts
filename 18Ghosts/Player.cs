@@ -11,12 +11,12 @@ namespace _18Ghosts
         public int YellowGhost { get; set; }
         public int RedGhost { get; set; }
         public int BlueGhost { get; set; }
-        public Type type;
+        public Type MyType { get; private set; }
 
         //Constructor
         public Player(Type type, int nghosts)
         {
-            this.type = type;
+            MyType = type;
             Ghosts = new Ghost[nghosts];
             YellowGhost = 0;
             BlueGhost = 0;
@@ -30,17 +30,17 @@ namespace _18Ghosts
             {
                 if (i < 3)
                 {
-                    Ghosts[i] = new Ghost(type, ConsoleColor.Red);
+                    Ghosts[i] = new Ghost(MyType, ConsoleColor.Red);
                     RedGhost++;
                 }
                 else if (i < 6)
                 {
-                    Ghosts[i] = new Ghost(type, ConsoleColor.Blue);
+                    Ghosts[i] = new Ghost(MyType, ConsoleColor.Blue);
                     BlueGhost++;
                 }
                 else
                 {
-                    Ghosts[i] = new Ghost(type, ConsoleColor.Yellow);
+                    Ghosts[i] = new Ghost(MyType, ConsoleColor.Yellow);
                     YellowGhost++;
                 }
             }

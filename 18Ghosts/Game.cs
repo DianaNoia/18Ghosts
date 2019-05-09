@@ -14,6 +14,7 @@ namespace _18Ghosts
 
         private ConsoleColor selectedColor;
         private string input;
+        private int currentTurn;
 
         // Constructor
         public Game()
@@ -23,7 +24,7 @@ namespace _18Ghosts
             player1 = new Player(Type.type1, 9);
             player2 = new Player(Type.type2, 9);
             currentPlayer = player1;
-            
+            currentTurn = 0;
         }
 
         // Method to make turns until the end of the game
@@ -36,29 +37,39 @@ namespace _18Ghosts
             do
             {
                 drawGame.Draw();
+                drawGame.PlayerStats(currentPlayer);
                 if (currentPlayer.HasGhosts())
                 {
                     drawGame.AskForColor();
                     input = Console.ReadLine();
                     if (CheckColor(input))
                     {
+                        drawGame.ClearLine();
                         drawGame.AskForPosition();
                         input = Console.ReadLine();
                         if (!CheckPosition(input, Console.ReadLine()))
                         {
+                            drawGame.ClearLine();
                             drawGame.WrongPlace();
                             Console.ReadKey();
                             continue;
                         }
-                    } else
+                    }
+                    else
                     {
+                        drawGame.ClearLine();
                         drawGame.WrongColor();
                         Console.ReadKey();
                         continue;
                     }
                 }
+                else
+                {
+
+                }
                 drawGame.Draw();
                 currentPlayer = currentPlayer == player1 ? player2 : player1;
+                currentTurn++;
             }
             while (true);
             Console.ReadLine();
@@ -67,7 +78,7 @@ namespace _18Ghosts
         private bool CheckColor(string input)
         {
             bool temp;
-            switch(input)
+            switch (input)
             {
                 case "Red":
                     temp = currentPlayer.RedGhost > 0;
@@ -94,6 +105,7 @@ namespace _18Ghosts
             int x = Convert.ToInt32(col);
             int y = Convert.ToInt32(row);
             bool temp = false;
+            Ghost ghost;
 
             if (x >= 5 || y >= 5)
             {
@@ -103,7 +115,21 @@ namespace _18Ghosts
             if (board.Houses[y, x].IsEmpty && board.Houses[y, x].Color == selectedColor)
             {
                 temp = true;
-                Ghost ghost = new Ghost(currentPlayer.type, selectedColor);
+                if (currentTurn > 18)
+                {
+                    if (currentPlayer.MyType == Type.type1) {
+                        ghost = new Ghost(Type.type2, selectedColor);
+                    }
+                    else
+                    {
+                        ghost = new Ghost(Type.type1, selectedColor);
+                    }
+                }
+                else
+                {
+                    ghost = new Ghost(currentPlayer.MyType, selectedColor);
+                }
+                
                 currentPlayer.RemoveGhost(selectedColor);
                 board.PlaceGhosts(y, x, ghost);
             }
