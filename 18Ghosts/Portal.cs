@@ -4,25 +4,36 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Portal class
+    /// </summary>
     class Portal
     {
-        // Variables
-        //╿ "\u257F", ╽" 2\u257D ", ╼ "\u257C", ╾ "\u257E " 
+        /** \brief Variables*/
+        // ╿ "\u257F", ╽" 2\u257D ", ╼ "\u257C", ╾ "\u257E " 
         public readonly string[] portal = { " \u257F", " \u257D ", "\u257C", "\u257E " };
-        // Properties
+        /** \brief Properties */ 
         public ConsoleColor Color { get; private set; }
         public Rotation MyRotation { get; set; }
 
-        // Constructor
+        /// <summary>
+        /// Constructor for Portal
+        /// </summary>
+        /// <param name="myRotation">Start rotation</param>
+        /// <param name="color">Start color</param>
         public Portal(Rotation myRotation, ConsoleColor color)
         {
             MyRotation = myRotation;
             Color = color;
         }
 
+        /// <summary>
+        /// Method to rotate the portal
+        /// </summary>
         public void Rotate()
         {
-            switch(MyRotation)
+            //brief switch cicle
+            switch (MyRotation)
             {
                 case Rotation.North:
                     MyRotation = Rotation.East;
