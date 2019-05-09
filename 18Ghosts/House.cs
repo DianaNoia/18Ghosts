@@ -4,9 +4,12 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Contains an object to be on the board
+    /// </summary>
     class House
     {
-        /** Properties - Não precisa de se verificar */
+        /** \brief Properties */
         public bool Mirror { get; private set; }
         public ConsoleColor Color { get; private set; }
         public Ghost Ghost { get; set; }
@@ -17,8 +20,8 @@ namespace _18Ghosts
         /// <summary>
         /// Constructors for Color
         /// </summary>
-        /// <param name="color"></param>
-        /// <param name="carpet"></param>
+        /// <param name="color">House color</param>
+        /// <param name="carpet">House carpet</param>
         public House(ConsoleColor color, string carpet)
         {
             Color = color;
@@ -29,7 +32,7 @@ namespace _18Ghosts
         /// <summary>
         /// Constructors for Mirror
         /// </summary>
-        /// <param name="mirror"></param>
+        /// <param name="mirror">House mirror</param>
         public House(bool mirror)
         {
             Mirror = mirror;
@@ -39,7 +42,7 @@ namespace _18Ghosts
         /// <summary>
         /// Constructors for Portal
         /// </summary>
-        /// <param name="portal"></param>
+        /// <param name="portal">House portal</param>
         public House(Portal portal)
         {
             Portal = portal;

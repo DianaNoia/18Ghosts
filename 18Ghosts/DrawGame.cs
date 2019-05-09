@@ -4,19 +4,27 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Class to draw in the console
+    /// </summary>
     class DrawGame
     {
-        // Variable
+        /** \brief  Variables */
         private Board board;
         int x, y;
 
-        // Contructor
+        /// <summary>
+        /// Contructor DrawGame
+        /// </summary>
+        /// <param name="board">Draw game</param>
         public DrawGame(Board board)
         {
             this.board = board;
         }
 
-        // Board method which creates board 
+        /// <summary>
+        /// Board method which creates board
+        /// </summary>
         public void Draw()
         {
             string[] board = { "\u2554", "\u2550", "\u2566", "\u2557", "\u2551", "\u2560", "\u256C", "\u2563", "\u255A", "\u2569", "\u255D" };
@@ -45,7 +53,9 @@ namespace _18Ghosts
 
         }
 
-        // LEGENDA COM OS SIMBOLOS !!!!!
+        /// <summary>
+        /// Method to show the legend
+        /// </summary>
         public void Legend()
         {
             Console.SetCursorPosition(55, 5);
@@ -57,13 +67,15 @@ namespace _18Ghosts
             Console.SetCursorPosition(55, 10);
             Console.Write(" Mirror         ♦ ");
 
-            // MOSTRAR AS TRES CORES DOS GHOSTS
             Console.SetCursorPosition(55, 12);
             Console.Write(" G1 - Ghost 1   ☻ ");
             Console.SetCursorPosition(55, 14);
             Console.Write(" G2 - Ghost 2   ◌ ");
         }
 
+        /// <summary>
+        /// Method to make the draw verification 
+        /// </summary>
         private void DrawVerification()
         {
             for (int rows = 0; rows < 5; rows++)
@@ -93,7 +105,7 @@ namespace _18Ghosts
 
                     Console.SetCursorPosition(x, y);
 
-                    // Draws Ghost
+                    //brief Draws Ghost 
                     if (board.Houses[rows, columns].Ghost != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Ghost.Color;
@@ -107,20 +119,20 @@ namespace _18Ghosts
                         }
 
                     }
-                    // Draws empty house
+                    //brief Draws empty house 
                     else if (board.Houses[rows, columns].Color != (ConsoleColor.Black))
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Color;
                         Console.Write(board.Houses[rows, columns].Carpet);
                     }
-                    // Draws Portal
+                    // \brief Draws Portal 
                     else if (board.Houses[rows, columns].Portal != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Portal.Color;
                         Portal temp = board.Houses[rows, columns].Portal;
                         Console.Write(temp.portal[(int)temp.MyRotation]);
                     }
-                    // Draws Mirror
+                    // \brief Draws Mirror 
                     else if (board.Houses[rows, columns].Mirror)
                     {
                         Console.Write("\u2666");
@@ -130,12 +142,18 @@ namespace _18Ghosts
             }
         }
 
+        /// <summary>
+        /// Method to ask the user witch color he want
+        /// </summary>
         public void AskForColor()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    What color ghost do you want to place? (E.g.: Red)");
         }
 
+        /// <summary>
+        /// Method to ask the use witch position he want
+        /// </summary>
         public void AskForPosition()
         {
             Console.SetCursorPosition(0, 28);
@@ -144,44 +162,66 @@ namespace _18Ghosts
 
         }
 
+        /// <summary>
+        /// Method to warn that the color is not available
+        /// </summary>
         public void WrongColor()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    That color is unavailable try again...");
         }
-        
-        
+
+        /// <summary>
+        /// Method to warn the place is ocupied
+        /// </summary>
         public void WrongPlace()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    That location can't be ocupied...");
         }
 
+        /// <summary>
+        /// Method to ask if the user wants to release ghosts from the dungeon
+        /// </summary>
         public void AskForDungeon()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    Do you want to free a ghost from the dungeon?");
         }
 
+        /// <summary>
+        /// Method to asks the position of the ghost he wants to move 
+        /// </summary>
         public void GhostToPlay()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    What's the position of the ghost you want to control?");
         }
 
+        /// <summary>
+        /// Method to tell userto move the keys
+        /// </summary>
         public void HouseToMoveTo()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("    Use the arrow keys to move to one house in any direction.");
         }
 
+        /// <summary>
+        /// Method to clear the input and output lines
+        /// </summary>
         public void ClearLine()
         {
             Console.SetCursorPosition(0, 28);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, 29);
             Console.Write(new string(' ', Console.WindowWidth));
         }
 
+        /// <summary>
+        /// Method that displayes the current player states
+        /// </summary>
+        /// <param name="player">Player states</param>
         public void PlayerStats(Player player)
         {
             Console.SetCursorPosition(0, 18);
@@ -198,8 +238,6 @@ namespace _18Ghosts
             Console.WriteLine($" > Blue Ghosts: {player.BlueGhost}\n");
             Console.WriteLine($" > Yellow Ghosts: {player.YellowGhost}\n");
         }
-
-
     }
 }
 

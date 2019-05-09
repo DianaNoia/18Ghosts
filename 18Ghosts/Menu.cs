@@ -4,27 +4,35 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    ///  Class to show Menu 
+    /// </summary>
     class Menu
     {
+        /// <summary>
+        /// Introduction of the game
+        /// </summary>
         public void Intro()
         {
-            // Clear the console
+            /** \brief  Clear the console */
             Console.Clear();
-            // Put a empty line
+            /** \brief  Put a empty line */
             Console.WriteLine();
-            // Writes in the console 
+            /** \brief  Writes in the console */
             Console.WriteLine("\t\t     18 Ghosts ");
             Console.WriteLine();
             Console.WriteLine("\t\t   Press any key ");
 
-            // It will stop the program until the user press any key
+            /** \brief  It will stop the program until the user press any key */
             Console.ReadKey();
-            // Call method MainMenu()
+            /** \brief  Call method MainMenu() */
             MainMenu();
 
         }
 
-        // Method  to see the menu
+        /// <summary>
+        ///  Show the Menu
+        /// </summary>
         private void MainMenu()
         {
             Console.Clear();
@@ -36,7 +44,7 @@ namespace _18Ghosts
             Console.WriteLine("\t\t 3 ->  Credits  <- ");
             Console.WriteLine("\t\t 4 ->  Quit     <- ");
 
-            // Switch cicle to choose what to do
+            //brief Switch cicle to choose what to do 
             switch (Convert.ToInt32(Console.ReadLine()))
             {
                 case 1:
@@ -62,18 +70,19 @@ namespace _18Ghosts
             Console.ReadLine();
         }
 
-        // Constructor
+        /// <summary>
+        ///  Constructor to initiate the game
+        /// </summary>
         private void Game()
         {
-            // esc para sair do jogo
-            // Call class DrawBoard
-
-            // Instances of game
+            /** \brief Instances of game */
             Game game = new Game();
             game.GameLoop();
         }
 
-        // Method for rule porposes
+        /// <summary>
+        /// Method for rule porposes
+        /// </summary>
         private void Rules()
         {
             Console.Clear();
@@ -136,10 +145,11 @@ namespace _18Ghosts
             MainMenu();
         }
 
-        // Method to show who made the game
+        /// <summary>
+        /// Method to show who made the game
+        /// </summary>
         private void Credits()
         {
-            // unicode 𐬼 U+10B3C 𑗊 U+115CA 𑗋 U+115CB 𑗌 U+115CC 𑗍 U+115CD 𑗎 U+115CE 𑗐 U+115D0 𑗕 U+115D5 ⏹
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine("\t\t\tCredits  ");
@@ -154,7 +164,9 @@ namespace _18Ghosts
             MainMenu();
         }
 
-        // Method to quit the game
+        /// <summary>
+        /// Method to quit the game
+        /// </summary>
         private void Quit()
         {
             Environment.Exit(0);

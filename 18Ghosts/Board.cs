@@ -4,19 +4,22 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Class to show the unicodes position, type, color and rotation
+    /// </summary>
     class Board
     {
 
-        // Variavel
+        /** \brief  Variavel */
         private Portal portalYellow, portalRed, portalBlue;
-        // Property
+        /** \brief  Property */
         public House[,] Houses { get; private set; }
-        /* CARPET ═ \u2550, ║ \u2551, ╔ \u2554, ╗ \u2557, ╚ \u255A, ╝ \u255D, 
-            ╬ \u256C ╦ \u2566 ╩ \u2569 ╠ \u2560  ╣ \u2563 */
-        // String -> class string -> tipo
+        /** \brief  String array to give the unicode in the board */
         string[] board = { "\u2554", "\u2550", "\u2566", "\u2557", "\u2551", "\u2560", "\u256C", "\u2563", "\u255A", "\u2569", "\u255D" };
 
-        // Contructor
+        /// <summary>
+        /// Contructor Board
+        /// </summary>
         public Board()
         {
             portalYellow = new Portal(Rotation.East, ConsoleColor.Yellow);
@@ -26,7 +29,9 @@ namespace _18Ghosts
             IniHouses();
         }
 
-        //Method
+        /// <summary>
+        /// Method to initiate the houses
+        /// </summary>
         private void IniHouses()
         {
             Houses[0, 0] = new House(ConsoleColor.Blue, board[0]);
@@ -56,6 +61,12 @@ namespace _18Ghosts
             Houses[4, 4] = new House(ConsoleColor.Yellow, board[10]);
         }
 
+        /// <summary>
+        /// Method to place the ghosts in the houses
+        /// </summary>
+        /// <param name="row">Bard row</param>
+        /// <param name="column">Board column</param>
+        /// <param name="ghost">Ghost to place</param>
         public void PlaceGhosts(int row, int column, Ghost ghost)
         {
             Houses[row, column].Ghost = ghost;
