@@ -91,7 +91,7 @@ namespace _18Ghosts
                     switch (columns)
                     {
                         case 0:
-                            x = 2; 
+                            x = 2;
                             break;
                         case 1:
                             x = 10;
@@ -103,7 +103,7 @@ namespace _18Ghosts
                             x = 24;
                             break;
                         case 4:
-                            x = 32; 
+                            x = 32;
                             break;
                     }
 
@@ -113,6 +113,15 @@ namespace _18Ghosts
                     if (board.Houses[rows, columns].Ghost != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Ghost.Color;
+                        if (board.Houses[rows, columns].Ghost.MyType == Type.type1)
+                        {
+                            Console.WriteLine("\u263B");
+                        }
+                        else if (board.Houses[rows, columns].Ghost.MyType == Type.type2)
+                        {
+                            Console.WriteLine("\u25CC");
+                        }
+
                     }
                     // Draws empty house
                     else if (board.Houses[rows, columns].Color != (ConsoleColor.Black))
@@ -124,7 +133,8 @@ namespace _18Ghosts
                     else if (board.Houses[rows, columns].Portal != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Portal.Color;
-                        Console.Write(board.Houses[rows, columns].Portal.portal[(int)board.Houses[rows, columns].Portal.MyRotation]);
+                        Portal temp = board.Houses[rows, columns].Portal;
+                        Console.Write(temp.portal[(int)temp.MyRotation]);
                     }
                     // Draws Mirror
                     else if (board.Houses[rows, columns].Mirror)
@@ -134,6 +144,30 @@ namespace _18Ghosts
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
+        }
+
+        public void AskForColor()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("What color ghost do you want to place? (Ex: Red)");
+        }
+
+        public void AskForPosition()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("In what position do you want to place it?");
+        }
+
+        public void WrongColor()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("That color is unavailable try again...");
+        }
+
+        public void WrongPlace()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("That location can't be ocupied...");
         }
     }
 }
@@ -147,8 +181,6 @@ namespace _18Ghosts
 // ⯌  U+2BCC ⯍ U+2BCD
 
 //2 TIPOS DE PHANTASMAS ░ \u2591 ▓ \u2593 ֍ \u058D ◌ \u25CC ● \u25CF ☻ \u263B
-// fanta ⛄U+26C4 ⛇ \u26C7 ㋡ \u32E1 ㋛ U+32DB 〠 \u3020
-
 //Console.ForegroundColor = ConsoleColor.Blue;
 //Console.WriteLine("\t\u26C4 ");
 //Console.ForegroundColor = ConsoleColor.Yellow;

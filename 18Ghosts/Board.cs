@@ -6,7 +6,7 @@ namespace _18Ghosts
 {
     class Board
     {
-        
+
         // Variavel
         private Portal portalYellow, portalRed, portalBlue;
         // Property
@@ -54,6 +54,12 @@ namespace _18Ghosts
             Houses[4, 2] = new House(portalBlue);
             Houses[4, 3] = new House(ConsoleColor.Blue, board[9]);
             Houses[4, 4] = new House(ConsoleColor.Yellow, board[10]);
+        }
+
+        public void PlaceGhosts(int row, int column, Ghost ghost)
+        {
+            Houses[row, column].Ghost = ghost;
+            Houses[row, column].IsEmpty = false;
         }
     }
 }
