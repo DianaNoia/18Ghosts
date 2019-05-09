@@ -20,5 +20,23 @@ namespace _18Ghosts
             Color = color;
         }
 
+        public void Rotate()
+        {
+            switch(MyRotation)
+            {
+                case Rotation.North:
+                    MyRotation = Rotation.East;
+                    break;
+                case Rotation.South:
+                    MyRotation = Rotation.West;
+                    break;
+                case Rotation.East:
+                    MyRotation = Rotation.South;
+                    break;
+                case Rotation.West:
+                    MyRotation = Rotation.North;
+                    break;
+            }
+        }
     }
 }

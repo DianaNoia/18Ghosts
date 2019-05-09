@@ -163,20 +163,30 @@ namespace _18Ghosts
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("That color is unavailable try again...");
         }
-        public void GhostToPlay()
-        {
-            Console.SetCursorPosition(0, 28);
-            Console.WriteLine("Yo");
-        }
-        public void HouseToMoveTo()
-        {
-            Console.SetCursorPosition(0, 28);
-            Console.WriteLine("");
-        }
+        
+        
         public void WrongPlace()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("That location can't be ocupied...");
+        }
+
+        public void AskForDungeon()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("Do you want to free a ghost from the dungeon?");
+        }
+
+        public void GhostToPlay()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("What's the position of the ghost you want to control?");
+        }
+
+        public void HouseToMoveTo()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("Use the arrow keys to move to one house in any direction.");
         }
 
         public void ClearLine()
