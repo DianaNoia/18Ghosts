@@ -4,6 +4,8 @@ using System.Text;
 
 namespace _18Ghosts
 {
-    // Enumeration for the Portal directions
+    /// <summary>
+    /// Enumeration for the Portal directions
+    /// </summary> 
     enum Rotation { North = 0, South = 1, East = 2, West = 3 }
 }

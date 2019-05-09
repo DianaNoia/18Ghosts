@@ -3,18 +3,24 @@ using System.Text;
 
 namespace _18Ghosts
 {
+    /// <summary>
+    /// Starting Class
+    /// </summary>
     class Program
     {
-        // Begining of the program
+        /// <summary>
+        /// Starts program
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             // Reads complex symbols
             Console.OutputEncoding = Encoding.UTF8;
 
-            // Declares Class Menu and iniciates method Menu()
+            // Declares the Class Menu and initiates method Menu
             Menu menu = new Menu();
 
-            // Calls class Menu in the method Intro()
+            // Calls class Menu in the method Intro
             menu.Intro();
         }
     }
