@@ -100,10 +100,10 @@ namespace _18Ghosts
                             x = 18;
                             break;
                         case 3:
-                            x = 24;
+                            x = 26;
                             break;
                         case 4:
-                            x = 32;
+                            x = 34;
                             break;
                     }
 
@@ -163,12 +163,47 @@ namespace _18Ghosts
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("That color is unavailable try again...");
         }
-
+        public void GhostToPlay()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("Yo");
+        }
+        public void HouseToMoveTo()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("");
+        }
         public void WrongPlace()
         {
             Console.SetCursorPosition(0, 28);
             Console.WriteLine("That location can't be ocupied...");
         }
+
+        public void ClearLine()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+            Console.Write(new string(' ', Console.WindowWidth));
+        }
+
+        public void PlayerStats(Player player)
+        {
+            Console.SetCursorPosition(0, 18);
+            Console.WriteLine("Player Stats: ");
+            if (player.MyType == Type.type1)
+            {
+                Console.WriteLine("Current PLayer: PLayer 1 \n");
+            }
+            else
+            {
+                Console.WriteLine("Current PLayer: PLayer 2 \n");
+            }
+            Console.WriteLine($"Red Ghosts: {player.RedGhost}\n");
+            Console.WriteLine($"Blue Ghosts: {player.BlueGhost}\n");
+            Console.WriteLine($"Yellow Ghosts: {player.YellowGhost}\n");
+        }
+
+
     }
 }
 
