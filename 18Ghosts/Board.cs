@@ -55,9 +55,11 @@ namespace _18Ghosts
             Houses[4, 3] = new House(ConsoleColor.Blue, board[9]);
             Houses[4, 4] = new House(ConsoleColor.Yellow, board[10]);
         }
+
         public void PlaceGhosts(int row, int column, Ghost ghost)
         {
             Houses[row, column].Ghost = ghost;
+            Houses[row, column].IsEmpty = false;
         }
     }
 }

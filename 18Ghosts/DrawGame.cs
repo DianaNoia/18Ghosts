@@ -91,7 +91,7 @@ namespace _18Ghosts
                     switch (columns)
                     {
                         case 0:
-                            x = 2; 
+                            x = 2;
                             break;
                         case 1:
                             x = 10;
@@ -103,7 +103,7 @@ namespace _18Ghosts
                             x = 24;
                             break;
                         case 4:
-                            x = 32; 
+                            x = 32;
                             break;
                     }
 
@@ -113,7 +113,7 @@ namespace _18Ghosts
                     if (board.Houses[rows, columns].Ghost != null)
                     {
                         Console.ForegroundColor = board.Houses[rows, columns].Ghost.Color;
-                        if (board.Houses[rows, columns].Ghost.MyType==Type.type1)
+                        if (board.Houses[rows, columns].Ghost.MyType == Type.type1)
                         {
                             Console.WriteLine("\u263B");
                         }
@@ -144,6 +144,30 @@ namespace _18Ghosts
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
+        }
+
+        public void AskForColor()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("What color ghost do you want to place? (Ex: Red)");
+        }
+
+        public void AskForPosition()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("In what position do you want to place it?");
+        }
+
+        public void WrongColor()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("That color is unavailable try again...");
+        }
+
+        public void WrongPlace()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("That location can't be ocupied...");
         }
     }
 }
