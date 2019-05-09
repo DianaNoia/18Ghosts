@@ -8,6 +8,9 @@ namespace _18Ghosts
     {
         // Variables
         public Ghost[] Ghosts { get; private set; }
+        public int FreeRedGhosts { get; set; }
+        public int FreeBlueGhosts { get; set; }
+        public int FreeYellowGhosts { get; set; }
         public int YellowGhost { get; set; }
         public int RedGhost { get; set; }
         public int BlueGhost { get; set; }
@@ -21,6 +24,9 @@ namespace _18Ghosts
             YellowGhost = 0;
             BlueGhost = 0;
             RedGhost = 0;
+            FreeRedGhosts = 0;
+            FreeBlueGhosts = 0;
+            FreeYellowGhosts = 0;
             InitGhosts();
         }
 
